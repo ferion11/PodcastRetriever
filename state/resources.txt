@@ -1,0 +1,16 @@
+# paired XML data file URLs and user-chosen names for podcasts
+
+http://rss.acast.com/naked_scientists_podcast/,naked_scientist
+http://downloads.bbc.co.uk/podcasts/radio4/tls/rss.xml,bbc_the_life_scientific
+http://downloads.bbc.co.uk/podcasts/worldservice/discovery/rss.xml,bbc_discovery
+http://downloads.bbc.co.uk/podcasts/radio4/iots/rss.xml,bbc_in_our_time_science
+http://www.abc.net.au/radionational/feed/2885480/podcast.xml,science_show
+http://www.nytimes.com/services/xml/rss/nyt/podcasts/scienceupdate.xml,science_update
+http://feeds.pbs.org/pbs/wgbh/nova-audio,NOVA_Podcast
+http://arewealone.libsyn.com/rss,big_picture_science
+http://www.cbc.ca/podcasting/includes/quirksaio.xml,CBC_quirks_and_quarks
+http://www.kqed.org/rss/questaudio.xml,KQED_science_quest
+http://www.sciencemag.org/rss/podcast.xml,science_aaas
+http://feeds.nature.com/nature/podcast/current?format=xml,nature
+http://rss.sciam.com/sciam/science-talk,scientific_american
+https://www.theguardian.com/science/series/science/podcast.xml,guardian_science
