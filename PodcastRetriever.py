@@ -100,6 +100,9 @@ class PodcastRetriever:
     count = self.retries
     while(not finished and count > 0):
       try:
+        opener=urllib.request.build_opener()
+        opener.addheaders=[('User-Agent','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36')]
+        urllib.request.install_opener(opener)
         urllib.request.urlretrieve(url,destpath,reporthook=self.downloadProgress)
         finished = True
       except Exception as e:
