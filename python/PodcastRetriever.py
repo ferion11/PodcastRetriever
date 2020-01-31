@@ -100,7 +100,7 @@ class PodcastRetriever:
     file_path = destpath
     print('\n * Downloading media title "%s".' % title)
     path = download(url, file_path, progressbar=True)
-    time.sleep(1)
+    time.sleep(3)
     return 0
 
   def download_rss_file(self,podsub,url):
