@@ -284,6 +284,7 @@ def _get_ftp(url, temp_file_name, initial_size, file_size, verbose_bool,
             return _chunk_write(chunk, local_file, progress)
         data.retrbinary(down_cmd, chunk_write)
         data.close()
+    progress.close()
 
 def _get_http(url, temp_file_name, initial_size, file_size, verbose_bool,
               progressbar, ncols=80):
