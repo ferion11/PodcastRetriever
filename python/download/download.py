@@ -338,6 +338,7 @@ def _get_http(url, temp_file_name, initial_size, file_size, verbose_bool,
             local_file.write(chunk)
             if progressbar is True:
                 progress.update(len(chunk))
+    progress.close()
 
 def md5sum(fname, block_size=1048576):  # 2 ** 20
     """Calculate the md5sum for a file.
