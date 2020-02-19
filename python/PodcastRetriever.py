@@ -78,7 +78,7 @@ class PodcastRetriever:
     except IOError:
       None
     except Exception as e:
-      print('Error loading "%s": %s' % (self.ever_down_path,e))
+      print('Error loading "%s": %s' % (self.ever_down_path,e), flush=True)
       
     for item in data.strip().split(os.linesep):
       if(len(item) > 0):
@@ -98,9 +98,10 @@ class PodcastRetriever:
   def download_file(self,url,title,destpath):
     self.targetfile = '  Downloading podcast "%s"' % title
     file_path = destpath
-    print('\n * Downloading media title "%s".' % title)
+    print('\n * Downloading media title "%s".' % title, flush=True)
     path = download(url, file_path, progressbar=True)
-    time.sleep(3)
+    print('\n' , flush=True)
+    time.sleep(1)
     return 0
 
   def download_rss_file(self,podsub,url):
@@ -120,11 +121,11 @@ class PodcastRetriever:
         data = resp.read().decode('utf-8')
         finished = (len(data) > 0)
       except Exception as e:
-        print('  Error for RSS title "%s", URL "%s": "%s", trying again.' % (podsub,url,e))
+        print('  Error for RSS title "%s", URL "%s": "%s", trying again.' % (podsub,url,e), flush=True)
         time.sleep(self.sleep_time)
       count -= 1
     if(count == 0):
-      print('  Download failed for RSS title "%s".' % podsub)
+      print('  Download failed for RSS title "%s".' % podsub, flush=True)
     return data
     
   def beautify_html(self,page):
@@ -243,7 +244,7 @@ b:hover {
       with(codecs.open(self.resource_path,encoding='utf-8')) as f:
         data = f.read()
     except:
-      print("No resource file %s, quitting." % self.resource_path)
+      print("No resource file %s, quitting." % self.resource_path, flush=True)
     else:
       
       self.resources = [re.split(r'\s*,\s*',x) for x in re.findall(r'\s*(.*?)\s*\n+',data) if len(x) > 0 and x[0] != '#']
@@ -257,7 +258,7 @@ b:hover {
         destdir = os.path.join(self.pod_dir,podsub)
         self.make_dir_if_needed(destdir)
         
-        print('Checking online "%s" resource ...' % podsub)
+        print('Checking online "%s" resource ...' % podsub, flush=True)
             
         rsspath = os.path.join(self.rssf,'%s.xml' % (podsub))
         
@@ -309,7 +310,7 @@ b:hover {
               self.download_file(url,title,destpath)
               if(os.path.exists(destpath)):
                 if(self.file_size(destpath) == 0):
-                  print('  Removing zero-length file %s ...' % destpath)
+                  print('  Removing zero-length file %s ...' % destpath, flush=True)
                   os.remove(destpath)
                 else:
                   self.add_to_downloaded(dest_tag)
@@ -330,7 +331,7 @@ b:hover {
       if(self.original_downloaded != self.ever_downloaded):
         self.write_downloaded()
   
-      print('Finished, downloaded %d new podcasts.' % new_downloads)
+      print('Finished, downloaded %d new podcasts.' % new_downloads, flush=True)
 
     if(self.args.keep):
       input('Press Enter to close:')
