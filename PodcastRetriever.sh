@@ -4,7 +4,6 @@
 
 terminal='xterm'
 
-tty -s || { $terminal -e $0 "$@"; exit 0; }
+tty -s || { "$terminal" -e "$0" "$@"; exit 0; }
 
-./python/PodcastRetriever.py --keep # put your requirements here
-
+./python/PodcastRetriever.py --keep "$@"
